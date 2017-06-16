@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title></title>
+	    <style type="text/css">
+            #Button1 {
+                width: 178px;
+            }
+        </style>
+       
+	</head>
+	<body>
+	
+	    <h1>
+            Printing primes in Javascript</h1>
+	
+	    
+        <p>
+            Note that with a high number you will likely get a &quot;Stop running this script&quot; 
+            or &quot;Unresponsive script&quot; 
+            alert, which wrecks the test. See <a href="http://www.itwriting.com/blog/119-ie7-script-madness.html">here</a> 
+            for an explanation and fix, for IE and FireFox.</p>
+	
+	    <p>
+            Number for which to count and print primes: <input id="testnum" type="text" value ="1000000"/></p>
+        <p>
+            <input id="btnCount" type="button" value="Print the primes" onclick="countprimes()" /></p>
+            <p id="lbresult">Click to print the primes</p>
+            
+            <script type="text/javascript">
+            
+function countprimes() {
+var n = parseInt(testnum.value);
+var start = new Date;
+var i = 0;
+var j = 0;
+var limit = 0;
+var numprimes = 1; // 2 is prime
+
+for (i = 3; i<= n; i+=2)
+{
+var isPrime = true;
+
+limit = Math.ceil(Math.sqrt(i)) + 1;
+
+for (j = 3; j < limit; j+=2)
+{
+if (i % j == 0)
+{
+isPrime = false;
+break;
+}
+
+if (isPrime != true)
+{
+continue;
+}
+}
+
+if (isPrime)
+{
+numprimes ++;
+document.write(i);
+document.write(' ');
+}
+}
+
+var end = new Date;
+
+var timetaken = end.getTime() - start.getTime();
+timetaken = timetaken / 1000;
+
+document.write( "<br><br>Number of primes up to: " + n + " is " + numprimes + ", counted and printed in " + timetaken + " secs.");
+}
+            
+</script>
+	
+	</body>
+</html>
